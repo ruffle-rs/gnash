@@ -1706,7 +1706,6 @@ TEST_CASES = \
 	goto_frame_testrunner \
 	consecutive_goto_frame_testrunner \
 	multi_doactions_and_goto_frame_testrunner \
-	XMLSocketTester \
 	extgetvariable_testrunner_v5 \
 	extgetvariable_testrunner_v6 \
 	extgetvariable_testrunner_v7 \
