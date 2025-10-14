@@ -111,7 +111,7 @@ info('['+rcsid+' ' + BRANCH_NICK+'-'+BRANCH_REVNO+'-'+COMMIT_ID+']');
 // If using the DEJAGNU_MODULE this info will be printed
 // by code in dejagnu_so_init.as
 #ifndef USE_DEJAGNU_MODULE
-info("SWF" + OUTPUT_VERSION + " - " + System.capabilities.version + "\n");
+info("SWF" + OUTPUT_VERSION + "\n");
 #endif
 
 #endif // _CHECK_AS_

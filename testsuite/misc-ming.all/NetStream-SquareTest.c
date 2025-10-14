@@ -84,7 +84,6 @@ main(int argc, char** argv)
   //
   
   sprintf(buffer_a,
-  	"note(System.capabilities.version);"
   	"note('SWF version %d');"
   	"nc=new NetConnection();"
 	"check(!nc.isConnected, 'newly created NetConnection is not connected');"

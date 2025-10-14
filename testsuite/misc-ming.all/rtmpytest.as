@@ -7,7 +7,7 @@
 // sent, an array is returned. This array may contain primitive
 // types.
 
-note("SWF" + OUTPUT_VERSION + " - " + System.capabilities.version + "\n");
+note("SWF" + OUTPUT_VERSION + "\n");
 rcsid="red5test.as - <bzr revno here>";
 
 #define info _root.note
