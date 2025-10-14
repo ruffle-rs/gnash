@@ -94,11 +94,11 @@ Original author: Nutchanon Wetchasit <Nutchanon.Wetchasit@gmail.com>
 		if(op1==op2) {
 			xpassed++;
 			successline=document.createElement("strong");
-			successline.appendChild(document.createTextNode("XPASSED: "+msg));
+			successline.appendChild(document.createTextNode("PASSED: "+msg));
 			flashstatus.appendChild(successline);
 		} else {
 			xfailed++;
-			flashstatus.appendChild(document.createTextNode("XFAILED: "+msg+" (\""+op1+"\" != \""+op2+"\")"));
+			flashstatus.appendChild(document.createTextNode("FAILED: "+msg+" (\""+op1+"\" != \""+op2+"\")"));
 		}
 		flashstatus.appendChild(document.createElement("br"));
 	}
@@ -136,7 +136,7 @@ Original author: Nutchanon Wetchasit <Nutchanon.Wetchasit@gmail.com>
 
 		try {
 			varvalue=document.getElementById("varsource").GetVariable(varpath);
-			xcheck_equals(varvalue,refvalue,"GetVariable call on \""+varpath+"\" path should return a correct value");
+			check_equals(varvalue,refvalue,"GetVariable call on \""+varpath+"\" path should return a correct value");
 		} catch(e) {
 			check_error("Failed calling Flash\'s GetVariable(\""+varpath+"\") function: "+e);
 		}

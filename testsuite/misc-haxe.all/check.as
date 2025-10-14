@@ -30,21 +30,21 @@
 #define check_equals(obt, exp) Dejagnu.check_equals(obt, exp, _INFO_)
 
 // First argument is the expression we test, second is the result we expect
-#define xcheck_equals(obt, exp) Dejagnu.xcheck_equals(obt, exp, _INFO_)
+#define xcheck_equals(obt, exp) check_equals(obt, exp)
 
 #define check(a) Dejagnu.check(a, #a+' '+_INFO_)
 #define xcheck(a) Dejagnu.xcheck(a, #a+' '+_INFO_)
 
 #define pass(text) Dejagnu.pass(text + _INFO_)
-#define xpass(text) Dejagnu.xpass(text + _INFO_)
+#define xpass(text) Dejagnu.pass(text + _INFO_)
 #define fail(text) Dejagnu.fail(text + _INFO_)
-#define xfail(text) Dejagnu.xfail(text + _INFO_)
+#define xfail(text) Dejagnu.fail(text + _INFO_)
 #define pass(text) Dejagnu.pass(text + _INFO_)
 #define untested(text) Dejagnu.untested(text + _INFO_)
 #define unresolved(text) Dejagnu.unresolved(text + _INFO_)
 
 #define check_totals(n) Dejagnu.totals(n,  _INFO_)
-#define xcheck_totals(n) Dejagnu.xtotals(n,  _INFO_)
+#define xcheck_totals(n) Dejagnu.totals(n,  _INFO_)
 
 #define note(text) Dejagnu.note(text + _INFO_)
 

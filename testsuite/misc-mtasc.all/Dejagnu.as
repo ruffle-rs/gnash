@@ -48,11 +48,7 @@ class Dejagnu {
         xtrace(msg);
     }
 
-    static function xfail(why) {
-        xfailed++;
-        var msg = 'XFAILED: '+why;
-        xtrace(msg);
-    }
+    static function xfail(why) { fail(why); }
 
     static function pass(why) {
         passed++;
@@ -60,11 +56,7 @@ class Dejagnu {
         trace (msg);
     }
 
-    static function xpass(why) {
-        xpassed++;
-        var msg = 'XPASSED: '+why;
-        trace (msg);
-    }
+    static function xpass(why) { pass(why); }
 
     static function testcount() {
         var c = 0;
@@ -96,14 +88,7 @@ class Dejagnu {
         }
     }
 
-    static function xtotals(exp, msg) {
-        var obt = testcount();
-        if ( exp != undefined && obt != exp ) {
-            xfail('Test run '+obt+' (expected '+exp+') ['+msg+']');
-        } else {
-            xpass('Test run '+obt+' ['+msg+']');
-        }
-    }
+    static function xtotals(exp, msg) { totals(exp, msg); }
 
     static function check_equals(obt, exp, msg) {
         if(msg == null) msg = "";
@@ -113,13 +98,7 @@ class Dejagnu {
             fail('expected: "'+exp+'" , obtained: "'+obt+'" '+msg);
     }
 
-    static function xcheck_equals(obt, exp, msg) {
-        if(msg == null) msg = "";
-        if ( obt == exp ) 
-            xpass(obt+' == '+exp+' '+msg);
-        else 
-            xfail('expected: '+exp+' , obtained: '+obt+" "+msg);
-    }
+    static function xcheck_equals(obt, exp, msg) { check_equals(obt, exp, msg); }
 
     static function check(a, msg) {
         if ( a ) 
@@ -128,12 +107,7 @@ class Dejagnu {
             fail(msg != undefined ? msg : a);
     }
 
-    static function xcheck(a, msg) {
-        if ( a ) 
-            xpass(msg != undefined ? msg : a);
-        else 
-            xfail(msg != undefined ? msg : a);
-    }
+    static function xcheck(a, msg) { check(a, msg); }
 
     static function note(msg) {
         xtrace(msg);

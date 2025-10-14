@@ -186,8 +186,8 @@ get_dejagnu_actions()
 		" trace (msg); "
 		"};\n"
 		"TestState.prototype.xfail = function(why) {\n"
-		" this.xfailed++;\n"
-		" var msg = 'XFAILED: '+why;\n"
+		" this.failed++;\n"
+		" var msg = 'FAILED: '+why;\n"
 		" _root.xtrace(msg);\n"
 		" trace (msg); "
 		"};\n"
@@ -199,8 +199,8 @@ get_dejagnu_actions()
 		" trace (msg); "
 		"};\n"
 		"TestState.prototype.xpass = function(why) {\n"
-		" this.xpassed++;\n"
-		" var msg = 'XPASSED: '+why;\n"
+		" this.passed++;\n"
+		" var msg = 'PASSED: '+why;\n"
 		// don't visually print successes, even if unexpected,
 		// still use 'trace' for them
 		// " _root.xtrace(msg);\n"
@@ -264,22 +264,22 @@ get_dejagnu_actions()
         " {"
         "   if ( msg != undefined )"
         "   {"
-        "     _root.runtest.xpass(obt+' == '+exp+' ('+msg+')');\n"
+        "     _root.runtest.pass(obt+' == '+exp+' ('+msg+')');\n"
         "   }"
         "   else"
         "   {"
-        "     _root.runtest.xpass(obt+' == '+exp);\n"
+        "     _root.runtest.pass(obt+' == '+exp);\n"
         "   }"
         " }"
 		" else"
         " {"
         "   if ( msg != undefined )"
         "   {"
-        "     _root.runtest.xfail('expected: '+exp+' , obtained: '+obt);\n"
+        "     _root.runtest.fail('expected: '+exp+' , obtained: '+obt);\n"
         "   }"
         "   else"
         "   {"
-        "     _root.runtest.xfail('expected: '+exp+' , obtained: '+obt);\n"
+        "     _root.runtest.fail('expected: '+exp+' , obtained: '+obt);\n"
         "   }"
         " }"
 		"};\n"
@@ -290,8 +290,8 @@ get_dejagnu_actions()
 		"};\n"
 
 		"_root.xcheck = function(a, msg) {\n"
-		" if ( a ) _root.runtest.xpass(msg != undefined ? msg : a);\n"
-		" else _root.runtest.xfail(msg != undefined ? msg : a);\n"
+		" if ( a ) _root.runtest.pass(msg != undefined ? msg : a);\n"
+		" else _root.runtest.fail(msg != undefined ? msg : a);\n"
 		"};\n"
 
 		"_root.fail = function(msg) {\n"
@@ -299,7 +299,7 @@ get_dejagnu_actions()
 		"};\n"
 
 		"_root.xfail = function(msg) {\n"
-		" _root.runtest.xfail(msg);\n"
+		" _root.runtest.fail(msg);\n"
 		"};\n"
 
 		"_root.pass = function(msg) {\n"
@@ -307,7 +307,7 @@ get_dejagnu_actions()
 		"};\n"
 
 		"_root.xpass = function(msg) {\n"
-		" _root.runtest.xpass(msg);\n"
+		" _root.runtest.pass(msg);\n"
 		"};\n"
 
 		"_root.note = function(msg) {\n"
@@ -320,7 +320,7 @@ get_dejagnu_actions()
 		"};\n"
 
 		"_root.xtotals = function(exp, info) {\n"
-		" _root.runtest.xtotals(exp, info);\n"
+		" _root.runtest.totals(exp, info);\n"
 		"};\n"
 
 		"_root.dejagnu_module_initialized = 1;\n";

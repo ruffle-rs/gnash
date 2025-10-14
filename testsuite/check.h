@@ -39,9 +39,9 @@ class TestState
 {
  public:
   void pass(std::string s) { std::cout << "PASSED: " << s << std::endl;  };
-  void xpass(std::string s) { std::cout << "XPASSED: " << s << std::endl;  };
+  void xpass(std::string s) { std::cout << "PASSED: " << s << std::endl;  };
   void fail(std::string s) { std::cout << "FAILED: " << s << std::endl;  };
-  void xfail(std::string s) { std::cout << "XFAILED: " << s << std::endl;  };
+  void xfail(std::string s) { std::cout << "FAILED: " << s << std::endl;  };
   void unresolved(std::string s) { std::cout << "UNRESOLVED: " << s << std::endl;  };
 };
 
@@ -70,28 +70,11 @@ TestState _runtest;
 		} \
 	}
 
-#define xcheck_equals_label(label, expr, expected) \
-	{ \
-		std::stringstream ss; \
-		if ( label != "" ) ss << label << ": "; \
-		if ( expr == expected ) \
-		{ \
-			ss << #expr << " == " << expected; \
-			ss << " [" << __FILE__ << ":" << __LINE__ << "]"; \
-			_runtest.xpass(ss.str().c_str()); \
-		} \
-		else \
-		{ \
-			ss << #expr << " == '" << expr << "' (expected: " \
-				<< expected << ")"; \
-			ss << " [" << __FILE__ << ":" << __LINE__ << "]"; \
-			_runtest.xfail(ss.str().c_str()); \
-		} \
-	}
+#define xcheck_equals_label(label, expr, expected) check_equals_label(label, expr, expected)
 
 #define check_equals(expr, expected) check_equals_label(std::string(), expr, expected)
 
-#define xcheck_equals(expr, expected) xcheck_equals_label(std::string(), expr, expected)
+#define xcheck_equals(expr, expected) check_equals(expr, expected)
 
 #define check(expr) \
 	{ \
@@ -105,17 +88,7 @@ TestState _runtest;
 		} \
 	}
 
-#define xcheck(expr) \
-	{ \
-		std::stringstream ss; \
-		ss << #expr; \
-		ss << " [" << __FILE__ << ":" << __LINE__ << "]"; \
-		if ( expr ) { \
-			_runtest.xpass(ss.str().c_str()); \
-		} else { \
-			_runtest.xfail(ss.str().c_str()); \
-		} \
-	}
+#define xcheck(expr) check(expr)
 
 int trymain(int argc, char *argv[]);
 #define TRYMAIN(runtest) \

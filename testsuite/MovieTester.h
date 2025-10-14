@@ -48,12 +48,7 @@
 		tester.checkPixel(x, y, radius, color, tolerance, ss.str(), false); \
 	}
 
-#define xcheck_pixel(x, y, radius, color, tolerance) \
-	{\
-		std::stringstream ss; \
-		ss << "[" << __FILE__ << ":" << __LINE__ << "]"; \
-		tester.checkPixel(x, y, radius, color, tolerance, ss.str(), true); \
-	}
+#define xcheck_pixel(x, y, radius, color, tolerance) check_pixel(x, y, radius, color, tolerance)
 
 // Forward declarations
 namespace gnash {

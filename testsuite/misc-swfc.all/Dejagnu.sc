@@ -36,11 +36,7 @@
                 this.xtrace(msg);
             },
 
-            xfail: function (why) {
-                this.xfailed++;
-                var msg = 'XFAILED: '+why;
-                this.xtrace(msg);
-            },
+            xfail: function (why) { this.fail(why); },
 
             pass: function (why) {
                 this.passed++;
@@ -48,11 +44,7 @@
                 trace (msg);
             },
 
-            xpass: function (why) {
-                this.xpassed++;
-                var msg = 'XPASSED: '+why;
-                trace (msg);
-            },
+            xpass: function (why) { this.pass(why); },
 
             totals: function (expectedTestsRun, msg) {
 		if ( arguments.length > 1 )
@@ -83,38 +75,7 @@
 		this.done();
             },
 
-            xtotals: function (expectedTestsRun, msg) {
-		if ( arguments.length > 1 )
-		{
-			ttr = 0;
-			if ( this.passed ) ttr += this.passed;
-			if ( this.failed ) ttr += this.failed;
-			if ( this.xpassed ) ttr += this.xpassed;
-			if ( this.xfailed ) ttr += this.xfailed;
-			if ( this.untest ) ttr += this.untest;
-			if ( this.unresolv ) ttr += this.unresolv;
-			this.note("Total tests run: "+ttr+" typeof expected: "+typeof(expectedTestsRun));
-
-			if ( expectedTestsRun != ttr )
-			{
-				this.xfail("TOTAL tests run: "+ttr+", expected: "+expectedTestsRun+" ["+msg+"]");
-			}
-			else
-			{
-				this.xpass("TOTAL tests run: "+ttr+" ["+msg+"]");
-			}
-		}
-                this.xtrace('#passed: '+ this.passed);
-                this.xtrace('#failed: '+ this.failed);
-                if ( this.xpassed ) {
-                    this.xtrace('#unexpected successes: '+ this.xpassed);
-                }
-                if ( this.xfailed ) {
-                    this.xtrace('#expected failures: '+ this.xfailed);
-                }
-           
-		this.done();
-            },
+            xtotals: function (expectedTestsRun, msg) { this.totals(expectedTestsRun, msg); },
 
             check_equals: function (obt, exp, msg, expression) {
                 if(msg == null) msg = "";
@@ -124,13 +85,7 @@
                     this.fail(expression+': expected: "'+exp+'" , obtained: "'+obt+'" '+msg);
             },
 
-            xcheck_equals: function (obt, exp, msg, expression) {
-                if(msg == null) msg = "";
-                if ( obt == exp ) 
-                    this.xpass(expression+' == '+exp+" "+msg);
-                else 
-                    this.xfail(expression+': expected: '+exp+' , obtained: '+obt+" "+msg);
-            },
+            xcheck_equals: function (obt, exp, msg, expression) { this.check_equals(obt, exp, msg, expression); },
 
             check: function (a, msg) {
                 if ( a ) 
@@ -139,12 +94,7 @@
                     this.fail(msg != undefined ? msg : a);
             },
 
-            xcheck: function (a, msg) {
-                if ( a ) 
-                    this.xpass(msg != undefined ? msg : a);
-                else 
-                    this.xfail(msg != undefined ? msg : a);
-            },
+            xcheck: function (a, msg) { this.check(a, msg); },
 
             note: function (msg) {
                 this.xtrace(msg);

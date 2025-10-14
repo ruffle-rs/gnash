@@ -45,9 +45,9 @@
 #define _INFO_ concat(' [', concat(__FILE__, concat(':', concat(__LINE__,']'))))
 
 #define pass_check(lbl) { trace(concat("PASSED: ", concat(lbl, _INFO_))); }
-#define xpass_check(lbl) { trace(concat("XPASSED: ", concat(lbl, _INFO_))); }
+#define xpass_check(lbl) pass_check(lbl)
 #define fail_check(lbl) { trace(concat("FAILED: ", concat(lbl, _INFO_))); }
-#define xfail_check(lbl) { trace(concat("XFAILED: ", concat(lbl, _INFO_))); }
+#define xfail_check(lbl) fail_check(lbl)
 
 
 //
@@ -57,17 +57,13 @@
     if ( obt == exp ) pass_check( concat(#obt, concat(" == ", #exp)) ) \
     else fail_check( concat("expected: ", concat(#exp, concat(" obtained: ", obt))) )
     
-#define xcheck_equals(obt, exp)  \
-    if ( obt == exp ) xpass_check( concat(#obt, concat(" == ", #exp)) ) \
-    else xfail_check( concat("expected: ", concat(#exp, concat(" obtained: ", obt))) )
+#define xcheck_equals(obt, exp) check_equals(obt, exp)
         
 #define check(expr)  \
     if ( expr ) pass_check(#expr) \
     else fail_check(#expr)
 
-#define xcheck(expr)  \
-        if ( expr ) xpass_check(#expr) \
-        else xfail_check(#expr) 
+#define xcheck(expr) check(expr)
 
 //-------------------------------------------------------------------------------------------
     
