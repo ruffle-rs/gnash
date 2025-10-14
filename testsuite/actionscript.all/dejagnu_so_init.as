@@ -66,8 +66,7 @@ checkIt = function() {
 		__shared_assets._visible = true;
 
 		// Print run environment info
-		info("SWF" + OUTPUT_VERSION + " - " +
-			System.capabilities.version + "\n");
+		info("SWF" + OUTPUT_VERSION + "\n");
 
 		// jump to next frame
 		gotoAndPlay(1);
@@ -142,8 +141,7 @@ checkIt = function() {
 		};
 
 		// Print run environment info
-		info("SWF" + OUTPUT_VERSION + " - " +
-			System.capabilities.version + "\n");
+		info("SWF" + OUTPUT_VERSION + "\n");
 
 
 		// jump to next frame
