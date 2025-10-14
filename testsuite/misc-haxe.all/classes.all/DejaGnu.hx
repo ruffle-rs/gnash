@@ -78,8 +78,8 @@ class DejaGnu {
     }
 
     static public function xfail(why, ?p:haxe.PosInfos) {
-        xfailed++;
-        var msg = 'XFAILED: '+why+ " " + callerInfo(p);
+        failed++;
+        var msg = 'FAILED: '+why+ " " + callerInfo(p);
         xtrace(msg);
     }
 
@@ -90,8 +90,8 @@ class DejaGnu {
     }
 
     static public function xpass(why, ?p:haxe.PosInfos) {
-        xpassed++;
-        var msg = 'XPASSED: '+why+ " " + callerInfo(p);
+        passed++;
+        var msg = 'PASSED: '+why+ " " + callerInfo(p);
         xtrace(msg);
     }
     

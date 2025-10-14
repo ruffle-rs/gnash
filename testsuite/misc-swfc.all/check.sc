@@ -29,16 +29,16 @@
 #define check_equals(a, b) Dejagnu.check_equals(a, b, _INFO_, #a);
 //#define check_equals(a, b, msg) Dejagnu.check(a, b, msg + _INFO_);
 
-#define xcheck_equals(a, b) Dejagnu.xcheck_equals(a, b, _INFO_, #a);
+#define xcheck_equals(a, b) check_equals(a, b)
 //#define xcheck_equals(a, b, msg) Dejagnu.check(a, b, msg + _INFO_);
 
 #define check(a) Dejagnu.check(a, _INFO_);
-#define xcheck(a) Dejagnu.xcheck(a, _INFO_);
+#define xcheck(a) check(a)
 
 #define pass(text) Dejagnu.pass(text + _INFO_)
-#define xpass(text) Dejagnu.xpass(text + _INFO_)
+#define xpass(text) pass(text)
 #define fail(text) Dejagnu.fail(text + _INFO_)
-#define xfail(text) Dejagnu.xfail(text + _INFO_)
+#define xfail(text) fail(text)
 #define pass(text) Dejagnu.pass(text + _INFO_)
 #define untested(text) Dejagnu.untested(text + _INFO_)
 #define unresolved(text) Dejagnu.unresolved(text + _INFO_)
@@ -47,7 +47,7 @@
 
 #define totals(x) Dejagnu.totals(x, _INFO_)
 
-#define xtotals(x) Dejagnu.xtotals(x, _INFO_)
+#define xtotals(x) totals(x)
 
 #define _QUOTEME(x) #x
 #define QUOTEME(x) _QUOTEME(x)

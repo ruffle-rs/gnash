@@ -176,11 +176,7 @@ SWFMovieClip get_dejagnu_clip(SWFBlock font, int depth, int x, int y, int width,
  * @param expr
  *   The ActionScript expression
  */
-#define xcheck(m, expr)  \
-	SWFMovie_add(m, (SWFBlock)compile_actions("\
-		if ( %s ) xpass( \"%s [%s:%d]\"); \
-		else xfail( \"%s [%s:%d] \"); \
-		", expr, expr, __FILE__, __LINE__, expr, __FILE__, __LINE__));
+#define xcheck(m, expr) check(m, expr)
 
 
 /** \brief
@@ -219,11 +215,7 @@ SWFMovieClip get_dejagnu_clip(SWFBlock font, int depth, int x, int y, int width,
  *   The ActionScript expression we expect to equal the obtained one
  *
  */
-#define xcheck_equals(m, obt, exp)  \
-	SWFMovie_add(m, (SWFBlock)compile_actions("\
-		if ( %s == %s ) xpass( \"%s  ==  %s [%s:%d]\"); \
-		else xfail( \"expected: %s obtained: \" + %s + \" [%s:%d] \"); \
-		", obt, exp, obt, exp, __FILE__, __LINE__, exp, obt, __FILE__, __LINE__));
+#define xcheck_equals(m, obt, exp) check_equals(m, obt, exp)
 
 
 

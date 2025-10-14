@@ -57,8 +57,8 @@ class Dejagnu {
     }
 
     static function xfail(why) {
-        xfailed++;
-        var msg = 'XFAILED: '+why;
+        failed++;
+        var msg = 'FAILED: '+why;
         xtrace(msg);
     }
 
@@ -69,8 +69,8 @@ class Dejagnu {
     }
 
     static function xpass(why) {
-        xpassed++;
-        var msg = 'XPASSED: '+why;
+        passed++;
+        var msg = 'PASSED: '+why;
         flash.Lib.trace(msg);
     }
 
@@ -130,11 +130,11 @@ class Dejagnu {
 		if(msg == null) msg = "";
 		if ( obt == exp ) 
 		{
-			xpass(obt+' == '+exp+' '+msg);
+			pass(obt+' == '+exp+' '+msg);
 		}
 		else 
 		{
-			xfail('expected: '+exp+' , obtained: '+obt+" "+msg);
+			fail('expected: '+exp+' , obtained: '+obt+" "+msg);
 		}
 	}
 
@@ -156,13 +156,13 @@ class Dejagnu {
 	{
 		if ( a ) 
 		{
-			if ( msg != null ) xpass(msg);
-			else xpass(a);
+			if ( msg != null ) pass(msg);
+			else pass(a);
 		}
 		else 
 		{
-			if ( msg != null ) xfail(msg);
-			else xfail(a);
+			if ( msg != null ) fail(msg);
+			else fail(a);
 		}
 	}
 

@@ -58,9 +58,9 @@
 #else // ndef USE_DEJAGNU_MODULE
 
 #define pass_check(text) trace("PASSED: "+text)
-#define xpass_check(text) trace("XPASSED: "+text)
+#define xpass_check(text) pass_check(text)
 #define fail_check(text) trace("FAILED: "+text)
-#define xfail_check(text) trace("XFAILED: "+text)
+#define xfail_check(text) fail_check(text)
 #define info(x) trace(x)
 
 
@@ -77,7 +77,7 @@
 #define INFO " [" + __FILE__ + ":" + __LINE__ + "]" 
 
 #define check_totals(x) totals(x, INFO)
-#define xcheck_totals(x) xtotals(x, INFO)
+#define xcheck_totals(x) check_totals(x)
 
 //
 // Use check(<expression>)
@@ -88,11 +88,7 @@
 	else fail_check(#expr + \
 		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
 
-#define xcheck(expr)  \
-        if ( expr ) xpass_check(#expr + \
-		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
-        else xfail_check(#expr + \
-		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
+#define xcheck(expr) check(expr)
 
 //
 // Use check_equals(<obtained>, <expected>)
@@ -105,13 +101,7 @@
 		" obtained: " + obt + \
 		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
 
-#define xcheck_equals(obt, exp)  \
-        if ( obt == exp ) xpass_check( \
-                #obt + " == " + #exp + \
-		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
-        else xfail_check("expected: " + #exp + \
-                " obtained: " + obt + \
-		" [" + __FILE__ + ":" + __LINE__ + "]" ); \
+#define xcheck_equals(obt, exp) check_equals(obt, exp)
 
 #ifndef SUPPRESS_RCSID_DUMP
 #include "revno.h"

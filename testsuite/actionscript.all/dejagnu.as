@@ -42,8 +42,8 @@ rcsid="dejagnu.as";
 
 #define pass(text) pass_check(text + " [" + __LINE__ + "]")
 #define fail(text) fail_check(text + " [" + __LINE__ + "]")
-#define xpass(text) xpass_check(text + " [" + __LINE__ + "]")
-#define xfail(text) xfail_check(text + " [" + __LINE__ + "]")
+#define xpass(text) pass(text)
+#define xfail(text) fail(text)
 #define untested(text) untested_check(text + " [" + __LINE__ + "]")
 #define unresolved(text) unresolved_check(text + " [" + __LINE__ + "]")
 #define totals()
@@ -75,8 +75,8 @@ var unresolv = 0;
 // testing methodologies standard.
 #define pass(text) passed++; trace("PASSED: " + text + " [" + __LINE__ + "]")
 #define fail(text) failed++; trace("FAILED: " + text + " [" + __LINE__ + "]")
-#define xpass(text) xpassed++; trace("XPASSED: " + text + " [" + __LINE__ + "]")
-#define xfail(text) xfailed++; trace("XFAILED: " + text + " [" + __LINE__ + "]")
+#define xpass(text) pass(text)
+#define xfail(text) fail(text)
 #define untested(text) untest++; trace("UNTESTED: " + text + " [" + __LINE__ + "]")
 #define unresolved(text) unresolv++; trace("UNRESOLVED: " + text + " [" + __LINE__ + "]")
 

@@ -39,7 +39,7 @@ package dejagnu {
         
         public static function xfail(why) {
             xfailed++;
-            var msg = 'XFAILED: '+why;
+            var msg = 'FAILED: '+why;
             xtrace(msg);
         }
 
@@ -51,7 +51,7 @@ package dejagnu {
 
         public static function xpass(why) {
             xpassed++;
-            var msg = 'XPASSED: '+why;
+            var msg = 'PASSED: '+why;
             trace (msg);
         }
 
@@ -87,10 +87,10 @@ package dejagnu {
         public static function xcheck_equals(obt, exp, msg, expression) {
             if (msg == null) msg = "";
             if (obt == exp) { 
-                xpass(expression + ' == ' + exp + ' ' + msg);
+                pass(expression + ' == ' + exp + ' ' + msg);
             }
             else {
-                xfail(expression + ': expected: "' + exp + 
+                fail(expression + ': expected: "' + exp + 
                         '" , obtained: "' + obt + '" ' + msg);
             }
         }
@@ -106,10 +106,10 @@ package dejagnu {
     
         public static function xcheck(a, msg) {
             if (a) { 
-                xpass(msg != undefined ? msg : a);
+                pass(msg != undefined ? msg : a);
             }
             else { 
-                xfail(msg != undefined ? msg : a);
+                fail(msg != undefined ? msg : a);
             }
         }
     
